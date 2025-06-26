@@ -21,9 +21,18 @@ func _on_physics_process(_delta: float) -> void:
 
 func _on_next_transitions() -> void:
 	GameInputEvents.movement_input()
-	
+
 	if GameInputEvents.is_movement_input():
 		transition.emit("Walk")
+
+	if player.current_tool == DataTypes.Tools.AXE_WOOD && GameInputEvents.use_tool():
+		transition.emit("Chopping")
+
+	if player.current_tool == DataTypes.Tools.TILL_GROUND && GameInputEvents.use_tool():
+		transition.emit("Tilling")
+
+	if player.current_tool == DataTypes.Tools.WATER_CROPS && GameInputEvents.use_tool():
+		transition.emit("Watering")
 
 
 func _on_enter() -> void:
