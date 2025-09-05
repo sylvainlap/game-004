@@ -21,7 +21,7 @@ func add_log_scene() -> void:
 func _on_hurt(damage: int) -> void:
 	damage_component.apply_damage(damage)
 	material.set_shader_parameter("shake_intensity", 1.0)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	material.set_shader_parameter("shake_intensity", 0.0)
 
 
